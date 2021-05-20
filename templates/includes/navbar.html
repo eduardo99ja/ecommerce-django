@@ -38,12 +38,11 @@
                             <i class="fa fa-bars"></i> All category
                         </button>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Machinery / Mechanical Parts / Tools </a>
-                            <a class="dropdown-item" href="#">Consumer Electronics / Home Appliances </a>
-                            <a class="dropdown-item" href="#">Auto / Transportation</a>
-                            <a class="dropdown-item" href="#">Apparel / Textiles / Timepieces </a>
-                            <a class="dropdown-item" href="#">Home & Garden / Construction / Lights </a>
-                            <a class="dropdown-item" href="#">Beauty & Personal Care / Health </a>
+
+                            {% for category in links %}
+                            <a class="dropdown-item" href="{{category.get_url}}">{{category.category_name}}</a>
+                            {% endfor %}
+
                         </div>
                     </div> <!-- category-wrap.// -->
                 </div> <!-- col.// -->
@@ -59,7 +58,7 @@
                                 </button>
                             </div>
                         </div>
-                    </form> <!-- search-wrap .end// -->
+                    </form> <!-- searchlo-wrap .end// -->
                 </div> <!-- col.// -->
                 <div class="col-lg-3 col-sm-6 col-8 order-2 order-lg-3">
                     <div class="d-flex justify-content-end mb-3 mb-lg-0">
