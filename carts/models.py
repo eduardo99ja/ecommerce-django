@@ -26,6 +26,9 @@ class CartItem(models.Model):
         verbose_name = 'CartItem'
         verbose_name_plural = 'CartItems'
 
+    def sub_total(self):
+        return self.product.price * self.quantity
+
     def __str__(self):
         """Unicode representation of CartItem."""
         return self.product
