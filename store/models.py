@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.deletion import CASCADE
 from category.models import Category
 from django.urls import reverse
 
@@ -31,3 +32,21 @@ class Product(models.Model):
     def __str__(self):
         """Unicode representation of Product."""
         return self.product_name
+
+
+variation_category_choice = (
+    ('color', 'color'),
+    ('size', 'size'),
+)
+
+
+class Variation(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    variation_category = models.CharField(
+        choices=variation_category_choice, max_length=100)
+    variation_value = models.CharField(max_length=100)
+    is_active = models.BooleanField(default=True)
+    created_date = models.DateTimeField(auto_now=True)
+
+    def __unicode__(self) -> str:
+        return self.product
