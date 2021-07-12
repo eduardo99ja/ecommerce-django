@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     'store',
     'carts',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -142,7 +143,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 
-#SMTP CONFIGURATION
+# SMTP CONFIGURATION
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'eduardo2ja99@gmail.com'
