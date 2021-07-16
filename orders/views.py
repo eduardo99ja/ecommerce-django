@@ -3,6 +3,7 @@ from orders.forms import OrderForm
 from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from carts.models import CartItem
+from store.models import Product
 import datetime
 import json
 # Create your views here.
@@ -108,10 +109,13 @@ def payments(request):
         orderproduct.variations.set(product_variation)
         orderproduct.save()
 
-    # Reduce the quantity of the sold products
+        # Reduce the quantity of the sold products
+        product = Product.objects.get(id=item.product_id)
+        product.stock -= item.quantity
+        product.save()
 
     # clear cart
-
+    CartItem.objects.filter(user=request.user).delete()
     # send order recieved email to customer
 
     # Send order number and transaction id back to sendData method via JsonResponse
